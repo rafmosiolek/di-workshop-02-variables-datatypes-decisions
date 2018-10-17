@@ -56,30 +56,30 @@ happens.
 
 | Line                | Expected Result | Actual Result | Were you right? Why? |
 | ------------------- | --------------- | ------------- | -------------------- |
-| `2 + 2`             |                 |               |                      |
-| `5 - 3`             |                 |               |                      |
-| `3 * 6`             |                 |               |                      |
-| `10 / 2`            |                 |               |                      |
-| `5 / 2`             |                 |               |                      |
-| `5.0 / 2`           |                 |               |                      |
-| `“hello” + “world”` |                 |               |                      |
-| `“Hello” - “world”` |                 |               |                      |
-| `3 + “3”`           |                 |               |                      |
-| `typeof “hello”`    |                 |               |                      |
-| `typeof 13`         |                 |               |                      |
-| `typeof true`       |                 |               |                      |
-| `typeof 3 + 5`      |                 |               |                      |
-| `typeof (3 + 5)`    |                 |               |                      |
-| `typeof (3 + “3”)`  |                 |               |                      |
-| `3 == 3`            |                 |               |                      |
-| `3 == 2`            |                 |               |                      |
-| `typeof (3 == 3)`   |                 |               |                      |
-| `3 != 3`            |                 |               |                      |
-| `3 != 2`            |                 |               |                      |
-| `3 == 1 + 2`        |                 |               |                      |
-| `3 == 2 + 2`        |                 |               |                      |
-| `3 < 2 + 2`         |                 |               |                      |
-| `3 > 2 + 2`         |                 |               |                      |
+| `2 + 2`             |       4         |               |                      |
+| `5 - 3`             |       2         |               |                      |
+| `3 * 6`             |       18        |               |                      |
+| `10 / 2`            |       5         |               |                      |
+| `5 / 2`             |       2.5       |               |                      |
+| `5.0 / 2`           |       2.5       |               |                      |
+| `“hello” + “world”` | "helloworld"    |               |                      |
+| `“Hello” - “world”` |      NaN        |               |                      |
+| `3 + “3”`           |      "33"       |               |                      |
+| `typeof “hello”`    |      String     |               |                      |
+| `typeof 13`         |      number     |               |                      |
+| `typeof true`       |      boolean    |               |                      |
+| `typeof 3 + 5`      |      number     |               |                      |
+| `typeof (3 + 5)`    |      number     |               |                      |
+| `typeof (3 + “3”)`  |      string     |               |                      |
+| `3 == 3`            |      true       |               |                      |
+| `3 == 2`            |      false      |               |                      |
+| `typeof (3 == 3)`   |      boolean    |               |                      |
+| `3 != 3`            |      false      |               |                      |
+| `3 != 2`            |      true       |               |                      |
+| `3 == 1 + 2`        |      true       |               |                      |
+| `3 == 2 + 2`        |      false      |               |                      |
+| `3 < 2 + 2`         |      true       |               |                      |
+| `3 > 2 + 2`         |      false      |               |                      |
 
 ## Task 2
 
@@ -89,14 +89,14 @@ folder. Open your sketch in the browser to check it's working, then delete
 whatever's in `sketch.js`. Replace it with the following:
 
 ```js
-function setup() {
-  createCanvas(400, 200)
+function setup() { // declare a function that takes no parameters and call it setup. we can assume this function initialize a library and execute code inside it.
+  createCanvas(400, 200) // call function createCanvas that takes two parameters, two numbers of some sort. we can assume this function creates an canvas (using Canvas API) of size 400px width and 200px height
 }
 
-function draw() {
-  background(100)
+function draw() { // declare function and call it draw, no parameters passed
+  background(100) // call function background with parameter 100
 
-  rect(0, 0, 10, 10)
+  rect(0, 0, 10, 10) // call function rect with parameters 0, 0, 10, 10
 }
 ```
 
@@ -120,10 +120,15 @@ rect(position, 0, 10, 10)
 Run the sketch, and make notes below each of these questions:
 
 1. What happens?
+The rectangle is moving to the right.
 2. Why?
+Draw function is being called all the time and draw on canvas. everytime it's executed, it's changing the position of rectangle of 1px on X axis, so we have an impression that rectangular is moving.
 3. What happens if you change 1 to a larger or smaller number?
+If we operate on positive numbers - smaller numbers will make it go slower, bigger numbers - faster.
 4. Why?
+Please have a look at the answer to the second question. Same logic.
 5. What about a negative number?
+It will change the vector and go to the left edge.
 
 Add this line at the bottom of `draw`:
 
@@ -133,6 +138,7 @@ console.log('The position is ' + position)
 
 Open up the browser console again (right click -> inspect element -> console)
 and see what happens. **Why?**
+Consol.log built in funcion is used for debugging. We asked to consol the position variable everytime is being reasigned (everytime draw function is called, so constantly).
 
 Add this line at the top of your program. Add your name!
 
